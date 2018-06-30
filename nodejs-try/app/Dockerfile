@@ -1,6 +1,5 @@
-FROM node:9
+FROM node:8
 
-USER yang
 WORKDIR /usr/src/app
 COPY package*.json ./
 
