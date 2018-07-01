@@ -1,0 +1,1 @@
+echo "Run script\n"

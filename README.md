@@ -53,3 +53,27 @@ CMD /bin/bash
 
 
 ```
+
+## Examples
+```
+# log dir
+VOLUME /usr/app/log
+
+# Bundle app source
+COPY . /usr/app
+# Install app dependencies
+RUN npm install
+
+EXPOSE  3000
+CMD ["node", "server.js"]
+```
+
+
+
+## About gulpfile.json
+
+```
+// gulp.task('build', ['compile', 'res']);
+// use gulp v4.0.0
+gulp.task('build', gulp.series('compile', 'res'));
+```
