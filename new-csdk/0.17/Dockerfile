@@ -8,8 +8,9 @@ RUN apt-get update && \
     openssh-server \
     git \
     curl \
-    npm
-RUN useradd -d /home/yang -ms /bin/bash -g root -G sudo -p 123456 yang
+    npm \
+    sudo
+
 
 
 

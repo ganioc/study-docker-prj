@@ -47,5 +47,9 @@ RUN ls -la && which node && node --version
 
 From ubuntu:14:04 to csdk:0.16
 
+RUN useradd -m docker && echo "docker:docker" | chpasswd && adduser docker sudo
+USER docker
+CMD /bin/bash
+
 
 ```
