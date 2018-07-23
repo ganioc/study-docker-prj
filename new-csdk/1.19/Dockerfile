@@ -10,7 +10,8 @@ RUN su yang -c "curl https://raw.githubusercontent.com/creationix/nvm/v0.25.0/in
     && nvm install  v$NODE_VERSION \
     && nvm alias default $NODE_VERSION \
     && nvm use default \
-    && npm install -g typescript"
+    && npm install -g typescript \
+    && npm install -g node-pre-gyp"
 ENV NODE_PATH $NVM_DIR/versions/node/v$NODE_VERSION/lib/node_modules
 ENV PATH      $NVM_DIR/versions/node/v$NODE_VERSION/bin:$PATH
 USER yang
