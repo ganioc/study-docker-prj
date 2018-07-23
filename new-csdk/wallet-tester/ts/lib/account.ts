@@ -1,20 +1,21 @@
 import { IfAccount } from './data';
 import * as inquirer from 'inquirer';
-import { Data } from './data';
+
 import * as colors from 'colors';
-import { resolve } from 'url';
-// const accounts = new Accounts('', Data.accounts);
-// const menu = new Menu();
+import { Data } from './data';
+
 interface IfMenuAccount {
     account: string
 }
+
 const accountList = [
     {
-        type: 'list', name: 'account', message: 'Choose an Account (选择主账号)', choices: Data.accounts.map((e) => {
+        type: 'list', name: 'account', message: 'Choose an Account (选择主账号)', choices: Data.data.accounts.map((e: IfAccount) => {
             return e.name;
         })
     },
 ];
+
 
 export class Accounts {
     private account: IfAccount;
@@ -36,7 +37,7 @@ export class Accounts {
     }
     public setAccount(name: string) {
         this.accounts = [];
-        Data.accounts.forEach((e) => {
+        Data.data.accounts.forEach((e: IfAccount) => {
             if (name === e.name) {
                 this.account = e;
             } else {
