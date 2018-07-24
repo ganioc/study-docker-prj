@@ -2,6 +2,7 @@ import { ErrorCode } from '../types';
 import { RPCClient } from '../lib/rpc_client';
 import { Transaction } from '../../core/value_chain/transaction';
 import { BufferWriter } from '../../core/lib/writer';
+import * as colors from 'colors';
 
 export type HostClientOptions = { host: string, port: number };
 
@@ -14,6 +15,8 @@ export class HostClient {
         let cr = await this.m_client.callAsync('getNonce', params);
         if (cr.ret !== 200) {
             return { err: ErrorCode.RESULT_FAILED };
+        } else {
+
         }
         return JSON.parse(cr.resp!);
     }
@@ -42,7 +45,10 @@ export class HostClient {
         params.tx.encode(writer);
         let cr = await this.m_client.callAsync('sendTransaction', { tx: writer.render() });
         if (cr.ret !== 200) {
+            console.log(colors.red('callAsync sendTransaciotn return not 200'));
             return ErrorCode.RESULT_FAILED;
+        } else {
+            console.log(colors.red('callAsync sendTransaciotn OK 200'));
         }
         return JSON.parse(cr.resp!) as ErrorCode;
     }

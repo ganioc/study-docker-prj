@@ -50,7 +50,7 @@ export class Client {
 
         let tx = new Transaction();
         let fee: string = '0.01';
-        let address = me.name;
+        let address = me.address;
 
         tx.method = 'transferTo',
             tx.value = new BigNumber(amount);
@@ -59,15 +59,19 @@ export class Client {
 
         let { err, nonce } = await this.chainClient.getNonce({ address });
         if (err) {
-            console.error(`transferTo failed for ${err}`);
+            console.error(`getNonce failed for ${err}`);
             return;
+        } else {
+            console.log('getNonce succeed,', nonce);
         }
         tx.nonce = nonce! + 1;
         tx.sign(me.secret);
         err = await this.chainClient.sendTrasaction({ tx });
         if (err) {
-            console.error(`transferTo failed for ${err}`);
+            console.error(`sendTransaction failed for ${err}`);
             return;
+        } else {
+            console.log('sendTransaction OK');
         }
         console.log(`send transferTo tx: ${tx.hash}`);
         // watchingTx.push(tx.hash);
