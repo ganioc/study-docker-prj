@@ -2,3 +2,5 @@
 chainSDK/
 chainSDK/*
 node_modules/
+wallet-tester/
+wallet-tester/*

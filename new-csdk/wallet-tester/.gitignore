@@ -3,6 +3,5 @@ dist/*
 node_modules/
 node_modules/*
 .vscode
-wallet-tester/
-wallet-tester/*
+
 *~
