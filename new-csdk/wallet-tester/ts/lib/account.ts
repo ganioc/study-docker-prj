@@ -3,6 +3,7 @@ import * as inquirer from 'inquirer';
 
 import * as colors from 'colors';
 import { Data } from './data';
+import * as _ from 'lodash';
 
 interface IfMenuAccount {
     account: string
@@ -46,6 +47,37 @@ export class Accounts {
         });
         // console.log(this.account);
         // console.log(this.accounts);
+    }
+    public getAccountFromName(account: string): IfAccount {
+        if (account === this.account.name) {
+            return this.account;
+        }
+        let addrObj = _.find(this.accounts, (ele: IfAccount) => {
+            if (ele.name === account) {
+                return true;
+            }
+        });
+
+        if (addrObj === undefined) {
+            throw new Error('Cant find by name: ' + account);
+        }
+        return addrObj as IfAccount;
+    }
+    public getAddressFromAccount(account: string): string {
+
+        if (account === this.account.name) {
+            return this.account.address;
+        }
+        let addrObj = _.find(this.accounts, (ele: IfAccount) => {
+            if (ele.name === account) {
+                return true;
+            }
+        });
+
+        if (addrObj === undefined) {
+            throw new Error('unrecognized account , no address');
+        }
+        return (addrObj as IfAccount).address;
     }
     public async showMenu() {
         console.log('');

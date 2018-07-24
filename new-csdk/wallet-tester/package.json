@@ -16,12 +16,17 @@
     "@types/inquirer": "0.0.42",
     "@types/lodash": "^4.14.112",
     "@types/node": "^10.5.2",
+    "@types/winston": "^2.3.9",
     "bignumber": "^1.1.0",
+    "bignumber.js": "^7.2.1",
     "colors": "^1.3.0",
     "commander": "^2.16.0",
     "fs-extra": "^7.0.0",
     "inquirer": "^6.0.0",
     "lodash": "^4.17.10",
-    "tslint": "^5.11.0"
+    "secp256k1": "^3.5.0",
+    "tslint": "^5.11.0",
+    "winston": "^2.4.3",
+    "xmlhttprequest": "^1.8.0"
   }
 }

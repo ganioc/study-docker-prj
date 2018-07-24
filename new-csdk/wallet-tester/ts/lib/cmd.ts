@@ -75,7 +75,7 @@ export class Cmd extends EventEmitter {
                     console.log(accTemp.account);
                     console.log('');
 
-                    client.getBalance(() => {
+                    client.getBalance(acc, accTemp.account, () => {
                         this.showMenu(acc);
                     })
 
@@ -115,16 +115,16 @@ export class Cmd extends EventEmitter {
 
                     // 
 
-                    client.transferTo((() => {
+                    client.transferTo(acc, accTemp.account, accTemp.value, () => {
                         this.showMenu(acc);
-                    }));
+                    });
                     resolve('OK');
                 });
         });
 
     }
     public async showMenu(acc: Accounts) {
-        console.log(colors.green('----------------------------------------------'));
+        console.log(colors.green('\n\n----------------------------------------------'));
         console.log('  主账号:', colors.red(acc.getAccount().name));
         console.log('  Get Balance:', colors.blue('获取某账户/地址的余额 '));
         console.log('  Transfer To:', colors.blue('向某账户地址转移价值 '));
